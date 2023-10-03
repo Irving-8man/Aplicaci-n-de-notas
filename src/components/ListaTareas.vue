@@ -9,7 +9,7 @@
       <ItemListaTareas v-for="(tarea, index) in listaTareas" :key="index" 
       :tarea="tarea.nombre"
         :completado="tarea.completado" 
-        @marcar-tarea-completada="marcarTareaCompletada(index)"
+        @marcar-tarea-completada="marcarTareaCompleta(tarea)"
         @eliminar-tarea="eliminarTarea(index)"></ItemListaTareas>
     </div>
   </div>
@@ -21,10 +21,10 @@ import ItemListaTareas from './ItemListaTareas.vue';
 import { ref, reactive } from 'vue';
 
 const listaTareas = reactive([{nombre: "Tarea 1", completado: false}, 
-                      {nombre: 'Tarea 2', completado: true},
-                      {nombre: 'Tarea 3', completado: false},
-                      {nombre: 'Tarea 4', completado: false},
-                    ])
+                              {nombre: 'Tarea 2', completado: true},
+                              {nombre: 'Tarea 3', completado: false},
+                              {nombre: 'Tarea 4', completado: false},
+                            ])
 const nuevaTarea = ref('')
 
 function addtarea() {
@@ -34,12 +34,12 @@ function addtarea() {
   }
 }
 
-function marcarTareaCompletada(index) {
-  listaTareas[index].completed = !this.listaTareas[index].completed;
+function marcarTareaCompleta(elem){
+  elem.completado = !elem.completado
 }
 
 function eliminarTarea(index) {
-  listaTareas.value.splice(index, 1);
+  lista.splice(index, 1);
 }
 </script>
 
