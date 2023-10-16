@@ -17,7 +17,7 @@
           <h4 style="text-align: center;">Lista de Notas</h4>
           <div v-if="listaTareas.length === 0" style="margin-top: 20px;"> <p style="text-align: center; font-size: 17px;text-transform: uppercase;">No hay <span style=" text-decoration:line-through; color: rgb(250, 64, 64);">notas</span>...</p> </div>
           <div v-else>
-            <ItemListaTareas v-for="(nota, index) in listaTareas" :key="index" :titulo="nota.tituloTarea"
+            <ItemListaTareas v-for="(nota, index) in listaTareas" :key="index" :titulo="nota.tituloTarea" 
               :tarea="nota.contenidoTarea" @editar-tarea="editarNota(index)" @eliminar-tarea="eliminarTarea(index)">
             </ItemListaTareas>
           </div>
