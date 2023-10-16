@@ -1,84 +1,84 @@
-<template>
-  <!--<div style="margin-top: 100px;">
-    <input  v-model="text" placeholder="Ingresa un texto">
-    <button @click="sumar()"> + </button>
-    <button @click="resta()"> - </button>
-    <div>
-      <span>{{ lista }}</span>
-      <span v-if="numero > 0">Número Positivo</span>
-      <span v-else-if="numero < 0">Número Negativo</span>
-      <span v-else>Cero</span>
-    </div>
-  </div>
--->
-<!--
-  <input type="text" v-model="tarea" @keyup.enter="agregarTarea()">
-<button @click="agregarTarea()">Agregar Tarea</button>
-<div v-if="lista.length === 0">No hay tareas</div>
-<div v-else style="flex-direction: column;">
-  <ItemListaTareas v-for="elem, index in lista" :key="index" 
-  :tarea="elem.nombre" :completado="elem.completado"
-  @marcar-tarea-completada="marcarTareaCompleta(elem)"
-  @eliminar-tarea="eliminarTarea(index)"></ItemListaTareas>
-</div>
--->
-<ListaTareas class="lista"></ListaTareas>
-</template>
+<!--Este componente se encarga de estar montando y desmontarlos-->
 
 <script setup>
-import ItemListaTareas from './components/ItemListaTareas.vue'
 import ListaTareas from './components/ListaTareas.vue';
-import { ref, reactive } from 'vue';
-
-let lista = reactive([{nombre: "Tarea 1", completado: false}, 
-                      {nombre: 'Tarea 2', completado: true},
-                      {nombre: 'Tarea 3', completado: false},
-                      {nombre: 'Tarea 4', completado: false},
-                    ])
-let tarea = ref('')
-//let numero = ref(1)
-
-function agregarTarea(){
-  if( tarea.value.trim() !== ''){
-    lista.push({nombre: tarea.value, completado: false})
-    tarea.value= ''
-  }
-}
-
-function marcarTareaCompleta(elem){
-  elem.completado = !elem.completado
-}
-
-function eliminarTarea(index) {
-  lista.splice(index, 1);
-}
-//function resta() {numero.value--}
-//function sumar() {lista.push('1')}
 </script>
 
+<template>
+  <div class="header">
+    <h1 class="header-titulo">Aplicación de Notas</h1>
+  </div>
+  <ListaTareas></ListaTareas>
+</template>
+
+
+
 <style>
+:root {
+  --tipografiaTitulo: 'Times New Roman', Times, serif;
+  --tipografiaTexto: Arial, Helvetica, sans-serif;
+}
+
 body {
-  display: flex;
-  justify-content: center;
   min-height: 100vh;
+  min-width: 100%;
+  font-family: var(--tipografiaTitulo);
+  background-color: rgb(27, 26, 26);
+  font-size: 1.25rem;
+  color: white;
+  overflow-x: hidden;
 }
 
-.lista {
-  display: flex;
-  flex-direction: column;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+.header {
+  border-bottom: 2px dashed white;
+  padding-top: 10vh;
+  margin-bottom: 10vh;
 }
 
-h2 {
-  text-align: center;
+.header-titulo {
+  color: white;
+  font-size: larger;
+  font-size: 3.125rem;
+}
+
+button {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border: 1px dashed white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 530;
+}
+
+.type1button:hover {
+  border-color: rgb(255, 0, 0);
+  color: rgb(230, 102, 102);
+}
+
+.type2button:hover {
+  border-color: #00ff08;
+  color: #6ce770;
+}
+
+.type3button:hover {
+  border-color: #FFD700;
+  color: #ebd976;
+}
+
+input {
+  margin-top: 20px;
+  padding: 0;
+  width: 28.5rem;
+  height: 1.875rem;
+  align-self: center;
+  border-radius: 1px inherit;
+  font-size: 1rem;
+  font-weight:600;
 }
 
 *,
 *::before,
 *::after {
   margin: 0;
-  position: relative;
-  font-weight: normal;
-}
-
-</style>
+}</style>
